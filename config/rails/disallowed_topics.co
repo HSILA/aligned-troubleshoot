@@ -1,0 +1,22 @@
+define user ask general question
+  "What is the weather like today?"
+  "Can you tell me a joke?"
+  "What is the meaning of life?"
+  "How can I cook pasta?"
+
+define user ask non-manufacturing question 
+  "How do I fix a leaky faucet?"
+  "My car won't start, what should I do?"
+  "My internet is down, can you help?"
+  "Help me with manufacturing homework."
+
+define bot refuse answering
+  "I'm sorry, I can't help you with that. I'm here to help you with manufacturing problems."
+
+define flow
+    user ask general question
+    bot refuse answering
+
+define flow
+    user ask non-manufacturing question
+    bot refuse answering

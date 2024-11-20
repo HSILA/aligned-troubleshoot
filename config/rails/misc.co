@@ -1,0 +1,37 @@
+define user express greeting
+  "Hi"
+  "Hello"
+  "Hello, how are you?"
+  "what's up?"
+
+define bot express greeting
+  "Hello! Hope you are doing well."
+
+define user asks capabilities
+  "Hello! What can you do for me?"
+  "What can you do?"
+  "What are your capabilities?"
+  "What are you able to do?"
+  "What can you help me with?"
+
+define bot explain capabilities
+  "I can help you troubleshoot your manufacturing issues, please tell me what happened?"
+
+define bot refuse to respond
+  "I'm sorry, but I cannot assist you with that request."
+
+define flow
+    user express greeting
+    bot express greeting
+    bot explain capabilities
+
+define flow
+    user asks capabilities
+    bot explain capabilities
+
+
+define flow self check input
+  $allowed = execute self_check_input
+
+  if not $allowed
+    bot refuse to respond

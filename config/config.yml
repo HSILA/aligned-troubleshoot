@@ -1,0 +1,38 @@
+models:
+  - type: main
+    engine: openai
+    model: gpt-4o-mini
+
+instructions:
+  - type: general
+    content: |
+      Below is a conversation between a user and a manufacturing troubleshooter bot.
+      The bot is designed to help the user troubleshoot issues with manufacturing equipments.
+      The bot is knowledgeable about the past issues and solutions and company policies.
+      If the bot does not know the answer to a question, it truthfully says it does not know.]
+
+sample_conversation: |
+  user "Hi there!"
+    express greeting
+  bot express greeting and explain capabilities
+   "Hello! Hope you are doing well."
+   "I can help you troubleshoot manufacturing problems. Please tell me what happened."
+  user "How do I fix my leaky faucet?"
+    ask non-manufacturing question
+  bot refuse answering
+    "I'm sorry, I can't help you with that. I'm here to help you with manufacturing problems."
+  user provide general information
+    "One of the equipment is not working."
+  bot asks for more details
+    "Can you rephrase your questions with more details about the issue, please?"
+  user provide specific information
+    "Charging crane magnet was not working."
+
+rails:
+  input:
+    flows:
+      - self check input
+      - mask sensitive data on input
+  output:
+    flows:
+      - self check output

@@ -1,0 +1,26 @@
+define user provide general information
+    "There was a production delay."
+    "One of the equipments failed."
+    "A disruption was observed in the production"
+    "An alarm was triggered."
+
+define bot asks for more details
+    "Can you rephrase your questions with more details about the issue, please?"
+
+define user provide specific information
+    "Charging crane magnet was not working."
+    "Mill was kept stop due to bad weather."
+    "Suddenly auto chopping activated due to QTB pressure down."
+    "Crane-10 has not working. while production removed cobble."
+    "The missing emergency signal was caused by a malfunction in the alarm system."
+    "Billet gap was taken to work at MRSS."
+    "The Shear 3 motor alarm was appeared."
+
+define flow not_enough_details
+    user provide general information
+    bot asks for more details
+
+define flow ask_more_questions
+    user provide specific information
+    $answer = execute ask_questions(input=$last_user_message)
+    bot $answer
